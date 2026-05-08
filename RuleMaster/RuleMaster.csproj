@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    <!-- Package Metadata -->
+    <PackageId>RuleMaster</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title>RuleMaster - Attribute-Based Validation Library</Title>
+    <Description>A powerful, attribute-based validation library for .NET that provides comprehensive rule enforcement with clear error messages and fluent API support.</Description>
+    <Authors>RuleMaster Team</Authors>
+    <Company>RuleMaster</Company>
+    <Copyright>Copyright © 2025 RuleMaster Team</Copyright>
+    <PackageTags>validation;attributes;rules;business-rules;validation-library;dotnet;csharp</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/RuleMaster/RuleMaster</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/RuleMaster/RuleMaster</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    
+    <!-- Build Configuration -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    
+    <!-- Assembly Information -->
+    <AssemblyName>RuleMaster</AssemblyName>
+    <RootNamespace>RuleMaster</RootNamespace>
+    <Product>RuleMaster Validation Library</Product>
+    <AssemblyTitle>RuleMaster</AssemblyTitle>
+    <AssemblyDescription>A powerful, attribute-based validation library for .NET</AssemblyDescription>
+    <AssemblyCompany>RuleMaster</AssemblyCompany>
+    <AssemblyProduct>RuleMaster</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2025 RuleMaster Team</AssemblyCopyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    
+    <!-- Documentation -->
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Package Files -->
+  <ItemGroup>
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Package References for Source Link and Symbols -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+  </ItemGroup>
+
+</Project>
