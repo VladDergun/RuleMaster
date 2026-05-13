@@ -7,18 +7,18 @@
     
     <!-- Package Metadata -->
     <PackageId>RuleMaster</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>RuleMaster - Attribute-Based Validation Library</Title>
     <Description>A powerful, attribute-based validation library for .NET that provides comprehensive rule enforcement with clear error messages and fluent API support.</Description>
     <Authors>RuleMaster Team</Authors>
     <Company>RuleMaster</Company>
-    <Copyright>Copyright © 2025 RuleMaster Team</Copyright>
+    <Copyright>Copyright © 2026 RuleMaster Team</Copyright>
     <PackageTags>validation;attributes;rules;business-rules;validation-library;dotnet;csharp</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/RuleMaster/RuleMaster</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/VladDergun/RuleMaster</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/RuleMaster/RuleMaster</RepositoryUrl>
+    <RepositoryUrl>https://github.com/VladDergun/RuleMaster</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
     <!-- Build Configuration -->
@@ -37,9 +37,9 @@
     <AssemblyDescription>A powerful, attribute-based validation library for .NET</AssemblyDescription>
     <AssemblyCompany>RuleMaster</AssemblyCompany>
     <AssemblyProduct>RuleMaster</AssemblyProduct>
-    <AssemblyCopyright>Copyright © 2025 RuleMaster Team</AssemblyCopyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyCopyright>Copyright © 2026 RuleMaster Team</AssemblyCopyright>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
