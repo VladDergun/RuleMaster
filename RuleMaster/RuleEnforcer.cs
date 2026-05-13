@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Concurrent;
+using System.Reflection;
 
 namespace RuleMaster
 {
@@ -8,6 +9,16 @@ namespace RuleMaster
     /// </summary>
     public static class RuleEnforcer
     {
+        private sealed record PropertyDescriptor(PropertyInfo Property, object[] Attributes);
+
+        private static readonly ConcurrentDictionary<Type, PropertyDescriptor[]> _cache = new();
+
+        private static PropertyDescriptor[] BuildDescriptors(Type type) =>
+            type.GetProperties()
+                .Select(p => new PropertyDescriptor(p, p.GetCustomAttributes(false)))
+                .Where(d => d.Attributes.Any(a => a is Rules.PropertyRule or Rules.ConditionalEnforcementAttribute))
+                .ToArray();
+
         /// <summary>
         /// Validates all rule-annotated properties on <paramref name="entity"/>.
         /// All rules are evaluated before throwing, so every violation is reported at once.
@@ -19,25 +30,31 @@ namespace RuleMaster
         {
             ArgumentNullException.ThrowIfNull(entity);
 
-            var properties = typeof(T).GetProperties();
+            var descriptors = _cache.GetOrAdd(entity.GetType(), BuildDescriptors);
             var errors = new List<RuleValidationException>();
 
-            foreach (var property in properties)
+            foreach (var (property, attributes) in descriptors)
             {
                 var value = property.GetValue(entity);
 
-                var rules = property
-                    .GetCustomAttributes<Rules.PropertyRule>(false);
+                bool enforcing = true;
 
-                foreach (var rule in rules)
+                foreach (var attr in attributes)
                 {
-                    try
+                    if (attr is Rules.ConditionalEnforcementAttribute condition)
                     {
-                        rule.Validate(property.Name, value, entity);
+                        enforcing = enforcing && condition.ShouldEnforce(value, entity);
                     }
-                    catch (RuleValidationException ex)
+                    else if (attr is Rules.PropertyRule rule && enforcing)
                     {
-                        errors.Add(ex);
+                        try
+                        {
+                            rule.Validate(property.Name, value, entity);
+                        }
+                        catch (RuleValidationException ex)
+                        {
+                            errors.Add(ex);
+                        }
                     }
                 }
             }
