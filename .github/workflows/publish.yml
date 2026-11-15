@@ -36,8 +36,9 @@ jobs:
             exit 1
           fi
 
+      # GeneratePackageOnBuild (set in the csproj) breaks a clean multi-target pack with NU5026.
       - name: Pack
-        run: dotnet pack RuleMaster/RuleMaster.csproj -c Release -o artifacts
+        run: dotnet pack RuleMaster/RuleMaster.csproj -c Release -o artifacts -p:GeneratePackageOnBuild=false
 
       # Exchanges the OIDC token for a NuGet API key valid for 1 hour.
       - name: NuGet login (OIDC -> temporary API key)
