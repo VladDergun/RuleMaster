@@ -9,7 +9,7 @@ A powerful, attribute-based validation library for .NET that provides comprehens
 - **Clear error messages**: Detailed validation exceptions with property names
 - **Fluent API support**: Works seamlessly with existing validation frameworks
 - **Performance optimized**: Minimal overhead with efficient validation logic
-- **.NET 10.0 support**: Built on the latest .NET platform
+- **.NET 10.0 and .NET 11.0 support**: Multi-targets the latest .NET platforms
 
 ## Installation
 
